@@ -84,7 +84,8 @@
       "type": "json"
     },
     "firstTimeLogged": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     }
   }
 }
