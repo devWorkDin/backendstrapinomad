@@ -70,6 +70,21 @@
     },
     "lastName": {
       "type": "string"
+    },
+    "gender": {
+      "type": "boolean"
+    },
+    "languages": {
+      "type": "json"
+    },
+    "skills": {
+      "type": "json"
+    },
+    "countries": {
+      "type": "json"
+    },
+    "test": {
+      "type": "string"
     }
   }
 }
