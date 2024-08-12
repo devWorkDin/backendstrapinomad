@@ -83,8 +83,8 @@
     "countries": {
       "type": "json"
     },
-    "test": {
-      "type": "string"
+    "firstTimeLogged": {
+      "type": "boolean"
     }
   }
 }

@@ -807,7 +807,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     languages: Attribute.JSON;
     skills: Attribute.JSON;
     countries: Attribute.JSON;
-    test: Attribute.String;
+    firstTimeLogged: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
