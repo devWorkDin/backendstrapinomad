@@ -86,6 +86,9 @@
     "firstTimeLogged": {
       "type": "boolean",
       "default": true
+    },
+    "job": {
+      "type": "json"
     }
   }
 }
