@@ -803,12 +803,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     firstName: Attribute.String;
     lastName: Attribute.String;
-    gender: Attribute.Boolean;
     languages: Attribute.JSON;
     skills: Attribute.JSON;
     countries: Attribute.JSON;
     firstTimeLogged: Attribute.Boolean & Attribute.DefaultTo<true>;
     job: Attribute.JSON;
+    gender: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
