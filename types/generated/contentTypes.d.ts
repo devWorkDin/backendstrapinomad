@@ -809,6 +809,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     firstTimeLogged: Attribute.Boolean & Attribute.DefaultTo<true>;
     job: Attribute.JSON;
     gender: Attribute.String;
+    bio: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
