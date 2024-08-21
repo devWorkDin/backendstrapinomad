@@ -362,6 +362,142 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiDestinationDestination extends Schema.CollectionType {
+  collectionName: 'destinations';
+  info: {
+    singularName: 'destination';
+    pluralName: 'destinations';
+    displayName: 'Destination';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    city: Attribute.String;
+    country: Attribute.String;
+    rating: Attribute.JSON;
+    id_user: Attribute.BigInteger;
+    destinations: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::destination.destination',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::destination.destination',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEventEvent extends Schema.CollectionType {
+  collectionName: 'events';
+  info: {
+    singularName: 'event';
+    pluralName: 'events';
+    displayName: 'Event';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    dateEvent: Attribute.DateTime;
+    title: Attribute.Text;
+    description: Attribute.Text;
+    location: Attribute.JSON;
+    organizer: Attribute.JSON;
+    attendees: Attribute.JSON;
+    maxAttendees: Attribute.Integer;
+    categories: Attribute.Blocks;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
+  info: {
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Product';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    image: Attribute.Media<'images', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRatingDestinationRatingDestination
+  extends Schema.CollectionType {
+  collectionName: 'rating_destinations';
+  info: {
+    singularName: 'rating-destination';
+    pluralName: 'rating-destinations';
+    displayName: 'RatingDestination';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    titre: Attribute.String;
+    ee: Attribute.Boolean;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rating-destination.rating-destination',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rating-destination.rating-destination',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -806,141 +942,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiDestinationDestination extends Schema.CollectionType {
-  collectionName: 'destinations';
-  info: {
-    singularName: 'destination';
-    pluralName: 'destinations';
-    displayName: 'Destination';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    city: Attribute.String;
-    country: Attribute.String;
-    rating: Attribute.JSON;
-    id_user: Attribute.BigInteger;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::destination.destination',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::destination.destination',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiEventEvent extends Schema.CollectionType {
-  collectionName: 'events';
-  info: {
-    singularName: 'event';
-    pluralName: 'events';
-    displayName: 'Event';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    dateEvent: Attribute.DateTime;
-    title: Attribute.Text;
-    description: Attribute.Text;
-    location: Attribute.JSON;
-    organizer: Attribute.JSON;
-    attendees: Attribute.JSON;
-    maxAttendees: Attribute.Integer;
-    categories: Attribute.Blocks;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::event.event',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::event.event',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiProductProduct extends Schema.CollectionType {
-  collectionName: 'products';
-  info: {
-    singularName: 'product';
-    pluralName: 'products';
-    displayName: 'Product';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String;
-    image: Attribute.Media<'images', true>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::product.product',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiRatingDestinationRatingDestination
-  extends Schema.CollectionType {
-  collectionName: 'rating_destinations';
-  info: {
-    singularName: 'rating-destination';
-    pluralName: 'rating-destinations';
-    displayName: 'RatingDestination';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    titre: Attribute.String;
-    ee: Attribute.Boolean;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::rating-destination.rating-destination',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::rating-destination.rating-destination',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -951,6 +952,10 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::destination.destination': ApiDestinationDestination;
+      'api::event.event': ApiEventEvent;
+      'api::product.product': ApiProductProduct;
+      'api::rating-destination.rating-destination': ApiRatingDestinationRatingDestination;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -959,10 +964,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::destination.destination': ApiDestinationDestination;
-      'api::event.event': ApiEventEvent;
-      'api::product.product': ApiProductProduct;
-      'api::rating-destination.rating-destination': ApiRatingDestinationRatingDestination;
     }
   }
 }
