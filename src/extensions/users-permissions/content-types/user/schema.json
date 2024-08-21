@@ -97,6 +97,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::event.event"
+    },
+    "destinations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::destination.destination"
     }
   }
 }
