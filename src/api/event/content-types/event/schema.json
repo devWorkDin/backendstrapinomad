@@ -1,0 +1,40 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dateEvent": {
+      "type": "datetime"
+    },
+    "title": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "location": {
+      "type": "json"
+    },
+    "organizer": {
+      "type": "json"
+    },
+    "attendees": {
+      "type": "json"
+    },
+    "maxAttendees": {
+      "type": "integer"
+    },
+    "categories": {
+      "type": "blocks"
+    }
+  }
+}

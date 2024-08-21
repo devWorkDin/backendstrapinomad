@@ -92,6 +92,11 @@
     },
     "bio": {
       "type": "text"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event"
     }
   }
 }
