@@ -21,8 +21,8 @@
     "rating": {
       "type": "json"
     },
-    "d": {
-      "type": "string"
+    "id_user": {
+      "type": "biginteger"
     }
   }
 }

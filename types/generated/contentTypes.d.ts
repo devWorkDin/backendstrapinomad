@@ -821,7 +821,6 @@ export interface ApiDestinationDestination extends Schema.CollectionType {
     city: Attribute.String;
     country: Attribute.String;
     rating: Attribute.JSON;
-    d: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
