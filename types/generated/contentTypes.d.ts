@@ -798,6 +798,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
+    friend_requests: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::friend-request.friend-request'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -832,6 +837,11 @@ export interface ApiDestinationDestination extends Schema.CollectionType {
     rating: Attribute.JSON;
     id_user: Attribute.BigInteger;
     destinations: Attribute.JSON;
+    received_friend_requests: Attribute.Relation<
+      'api::destination.destination',
+      'oneToMany',
+      'api::friend-request.friend-request'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -881,6 +891,50 @@ export interface ApiEventEvent extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::event.event',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFriendRequestFriendRequest extends Schema.CollectionType {
+  collectionName: 'friend_requests';
+  info: {
+    singularName: 'friend-request';
+    pluralName: 'friend-requests';
+    displayName: 'FriendRequest';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    from: Attribute.Relation<
+      'api::friend-request.friend-request',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    to: Attribute.Relation<
+      'api::friend-request.friend-request',
+      'manyToOne',
+      'api::destination.destination'
+    >;
+    status: Attribute.Enumeration<
+      ['pending', 'accepted', 'rejected', 'cancelled', 'blocked', 'ignored']
+    > &
+      Attribute.DefaultTo<'pending'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::friend-request.friend-request',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::friend-request.friend-request',
       'oneToOne',
       'admin::user'
     > &
@@ -971,6 +1025,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::destination.destination': ApiDestinationDestination;
       'api::event.event': ApiEventEvent;
+      'api::friend-request.friend-request': ApiFriendRequestFriendRequest;
       'api::product.product': ApiProductProduct;
       'api::rating-destination.rating-destination': ApiRatingDestinationRatingDestination;
     }
