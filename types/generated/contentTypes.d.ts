@@ -793,6 +793,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     latitude: Attribute.Text;
     longitude: Attribute.Text;
     visible: Attribute.Boolean & Attribute.DefaultTo<false>;
+    friends: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

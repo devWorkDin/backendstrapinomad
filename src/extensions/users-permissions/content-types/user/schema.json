@@ -123,6 +123,11 @@
     "visible": {
       "type": "boolean",
       "default": false
+    },
+    "friends": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
     }
   }
 }
