@@ -26,12 +26,6 @@
     },
     "destinations": {
       "type": "json"
-    },
-    "received_friend_requests": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::friend-request.friend-request",
-      "mappedBy": "to"
     }
   }
 }

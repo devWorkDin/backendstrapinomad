@@ -12,18 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "from": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "friend_requests"
-    },
-    "to": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::destination.destination",
-      "inversedBy": "received_friend_requests"
-    },
     "status": {
       "type": "enumeration",
       "enum": [
@@ -35,6 +23,18 @@
         "ignored"
       ],
       "default": "pending"
+    },
+    "to": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "received_friend_requests"
+    },
+    "from": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "sent_friend_requests"
     }
   }
 }

@@ -803,6 +803,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::friend-request.friend-request'
     >;
+    received_friend_requests: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::friend-request.friend-request'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -837,11 +842,6 @@ export interface ApiDestinationDestination extends Schema.CollectionType {
     rating: Attribute.JSON;
     id_user: Attribute.BigInteger;
     destinations: Attribute.JSON;
-    received_friend_requests: Attribute.Relation<
-      'api::destination.destination',
-      'oneToMany',
-      'api::friend-request.friend-request'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -915,15 +915,15 @@ export interface ApiFriendRequestFriendRequest extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    to: Attribute.Relation<
-      'api::friend-request.friend-request',
-      'manyToOne',
-      'api::destination.destination'
-    >;
     status: Attribute.Enumeration<
       ['pending', 'accepted', 'rejected', 'cancelled', 'blocked', 'ignored']
     > &
       Attribute.DefaultTo<'pending'>;
+    to: Attribute.Relation<
+      'api::friend-request.friend-request',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
