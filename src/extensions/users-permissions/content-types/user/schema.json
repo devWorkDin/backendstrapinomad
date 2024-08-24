@@ -115,10 +115,10 @@
       ]
     },
     "latitude": {
-      "type": "biginteger"
+      "type": "text"
     },
     "longitude": {
-      "type": "biginteger"
+      "type": "text"
     },
     "visible": {
       "type": "boolean",
