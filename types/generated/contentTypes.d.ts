@@ -798,7 +798,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToOne',
       'plugin::users-permissions.user'
     >;
-    friend_requests: Attribute.Relation<
+    sent_friend_requests: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToMany',
       'api::friend-request.friend-request'
@@ -910,16 +910,16 @@ export interface ApiFriendRequestFriendRequest extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    from: Attribute.Relation<
-      'api::friend-request.friend-request',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
     status: Attribute.Enumeration<
       ['pending', 'accepted', 'rejected', 'cancelled', 'blocked', 'ignored']
     > &
       Attribute.DefaultTo<'pending'>;
     to: Attribute.Relation<
+      'api::friend-request.friend-request',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    from: Attribute.Relation<
       'api::friend-request.friend-request',
       'manyToOne',
       'plugin::users-permissions.user'
