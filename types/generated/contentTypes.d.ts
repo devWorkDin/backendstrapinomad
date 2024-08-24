@@ -790,8 +790,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::destination.destination'
     >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    latitude: Attribute.BigInteger;
-    longitude: Attribute.BigInteger;
+    latitude: Attribute.Text;
+    longitude: Attribute.Text;
     visible: Attribute.Boolean & Attribute.DefaultTo<false>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
