@@ -104,14 +104,25 @@
       "target": "api::destination.destination"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "latitude": {
+      "type": "biginteger"
+    },
+    "longitude": {
+      "type": "biginteger"
+    },
+    "visible": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
