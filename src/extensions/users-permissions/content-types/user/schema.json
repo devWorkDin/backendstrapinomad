@@ -140,6 +140,9 @@
       "relation": "oneToMany",
       "target": "api::friend-request.friend-request",
       "mappedBy": "to"
+    },
+    "friendsArray": {
+      "type": "json"
     }
   }
 }
