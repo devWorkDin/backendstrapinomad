@@ -41,10 +41,9 @@ module.exports = createCoreService(
       });
 
       if (strapi.io) {
-
         // Émettre un événement via Socket.io
-        strapi.io.emit('new_friend_request', friendRequest);
-    } else {
+        strapi.io.emit("new_friend_request", friendRequest);
+      } else {
         console.warn("Socket.io n'est pas initialisé dans Strapi");
       }
 
