@@ -1006,6 +1006,38 @@ export interface ApiRatingDestinationRatingDestination
   };
 }
 
+export interface ApiRecipeRecipe extends Schema.CollectionType {
+  collectionName: 'recipes';
+  info: {
+    singularName: 'recipe';
+    pluralName: 'recipes';
+    displayName: 'Recipe';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    nom: Attribute.String;
+    origine: Attribute.String;
+    difficulte: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::recipe.recipe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::recipe.recipe',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1029,6 +1061,7 @@ declare module '@strapi/types' {
       'api::friend-request.friend-request': ApiFriendRequestFriendRequest;
       'api::product.product': ApiProductProduct;
       'api::rating-destination.rating-destination': ApiRatingDestinationRatingDestination;
+      'api::recipe.recipe': ApiRecipeRecipe;
     }
   }
 }
