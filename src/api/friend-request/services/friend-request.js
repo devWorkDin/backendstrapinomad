@@ -14,6 +14,14 @@ module.exports = createCoreService(
       // Appeler la méthode create du service de base pour créer la demande d'ami
       const friendRequest = await super.create(data);
 
+      // Peupler les champs nécessaires (comme 'to' et 'from')
+      const populatedFriendRequest = await strapi.entityService.findOne(
+        "api::friend-request.friend-request",
+        friendRequest.id,
+        {
+          populate: ["to", "from"],
+        }
+      );
       // Vérifier si strapi.io est défini
       strapi.io.on("connection", (socket) => {
         console.log("Un client s'est connecté");
@@ -41,13 +49,13 @@ module.exports = createCoreService(
       });
 
       if (strapi.io) {
-        // Émettre un événement via Socket.io
-        strapi.io.emit("new_friend_request", friendRequest);
+        // Émettre un événement via Socket.io avec les données peuplées
+        strapi.io.emit("new_friend_request", populatedFriendRequest);
       } else {
         console.warn("Socket.io n'est pas initialisé dans Strapi");
       }
 
-      return friendRequest;
+      return populatedFriendRequest;
     },
   })
 );
