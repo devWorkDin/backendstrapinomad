@@ -1038,6 +1038,61 @@ export interface ApiRecipeRecipe extends Schema.CollectionType {
   };
 }
 
+export interface ApiWorkplaceWorkplace extends Schema.CollectionType {
+  collectionName: 'workplaces';
+  info: {
+    singularName: 'workplace';
+    pluralName: 'workplaces';
+    displayName: 'Workplace';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    description: Attribute.Text;
+    type: Attribute.Enumeration<
+      [
+        'Cafe',
+        'Coworking Space',
+        'Library',
+        'Restaurant',
+        'Park',
+        'Hotel',
+        'Home',
+        'Community Space',
+        'Transport',
+        'Beach'
+      ]
+    >;
+    address: Attribute.String;
+    city: Attribute.String;
+    country: Attribute.String;
+    opening_hours: Attribute.JSON;
+    contact_phone: Attribute.String;
+    rating: Attribute.Integer;
+    cover_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    wifi: Attribute.Enumeration<['very good', 'good', 'bad']>;
+    price: Attribute.Enumeration<['very cheap', 'cheap', 'expensive']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::workplace.workplace',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::workplace.workplace',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1062,6 +1117,7 @@ declare module '@strapi/types' {
       'api::product.product': ApiProductProduct;
       'api::rating-destination.rating-destination': ApiRatingDestinationRatingDestination;
       'api::recipe.recipe': ApiRecipeRecipe;
+      'api::workplace.workplace': ApiWorkplaceWorkplace;
     }
   }
 }

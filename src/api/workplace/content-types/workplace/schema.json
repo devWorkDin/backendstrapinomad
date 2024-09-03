@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "workplaces",
+  "info": {
+    "singularName": "workplace",
+    "pluralName": "workplaces",
+    "displayName": "Workplace",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "Cafe",
+        "Coworking Space",
+        "Library",
+        "Restaurant",
+        "Park",
+        "Hotel",
+        "Home",
+        "Community Space",
+        "Transport",
+        "Beach"
+      ]
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "opening_hours": {
+      "type": "json"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "rating": {
+      "type": "integer"
+    },
+    "cover_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "wifi": {
+      "type": "enumeration",
+      "enum": [
+        "very good",
+        "good",
+        "bad"
+      ]
+    },
+    "price": {
+      "type": "enumeration",
+      "enum": [
+        "very cheap",
+        "cheap",
+        "expensive"
+      ]
+    }
+  }
+}
