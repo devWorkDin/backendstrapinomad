@@ -68,7 +68,9 @@
         "very good",
         "good",
         "bad"
-      ]
+      ],
+      "required": false,
+      "default": "good"
     },
     "price": {
       "type": "enumeration",
@@ -76,7 +78,8 @@
         "very cheap",
         "cheap",
         "expensive"
-      ]
+      ],
+      "default": "cheap"
     },
     "cleanliness": {
       "type": "enumeration",
@@ -84,7 +87,8 @@
         "very good",
         "good",
         "bad"
-      ]
+      ],
+      "default": "good"
     }
   }
 }

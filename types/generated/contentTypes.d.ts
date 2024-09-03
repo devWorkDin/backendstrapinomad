@@ -1073,8 +1073,12 @@ export interface ApiWorkplaceWorkplace extends Schema.CollectionType {
     contact_phone: Attribute.String;
     rating: Attribute.Integer;
     cover_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    wifi: Attribute.Enumeration<['very good', 'good', 'bad']>;
-    price: Attribute.Enumeration<['very cheap', 'cheap', 'expensive']>;
+    wifi: Attribute.Enumeration<['very good', 'good', 'bad']> &
+      Attribute.DefaultTo<'good'>;
+    price: Attribute.Enumeration<['very cheap', 'cheap', 'expensive']> &
+      Attribute.DefaultTo<'cheap'>;
+    cleanliness: Attribute.Enumeration<['very good', 'good', 'bad']> &
+      Attribute.DefaultTo<'good'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
