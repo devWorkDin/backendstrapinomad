@@ -77,6 +77,14 @@
         "cheap",
         "expensive"
       ]
+    },
+    "cleanliness": {
+      "type": "enumeration",
+      "enum": [
+        "very good",
+        "good",
+        "bad"
+      ]
     }
   }
 }
