@@ -809,6 +809,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::friend-request.friend-request'
     >;
     friendsArray: Attribute.JSON;
+    workplaces: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::workplace.workplace'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
