@@ -1055,35 +1055,18 @@ export interface ApiWorkplaceWorkplace extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
+    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios', true>;
     name: Attribute.String;
     description: Attribute.Text;
-    type: Attribute.Enumeration<
-      [
-        'Cafe',
-        'Coworking Space',
-        'Library',
-        'Restaurant',
-        'Park',
-        'Hotel',
-        'Home',
-        'Community Space',
-        'Transport',
-        'Beach'
-      ]
-    >;
     address: Attribute.String;
     city: Attribute.String;
     country: Attribute.String;
-    opening_hours: Attribute.JSON;
-    contact_phone: Attribute.String;
-    rating: Attribute.Integer;
-    cover_image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    wifi: Attribute.Enumeration<['very good', 'good', 'bad']> &
-      Attribute.DefaultTo<'good'>;
-    price: Attribute.Enumeration<['very cheap', 'cheap', 'expensive']> &
-      Attribute.DefaultTo<'cheap'>;
-    cleanliness: Attribute.Enumeration<['very good', 'good', 'bad']> &
-      Attribute.DefaultTo<'good'>;
+    type: Attribute.String;
+    openingHours: Attribute.JSON;
+    facilities: Attribute.JSON;
+    mainFacilities: Attribute.JSON;
+    latitude: Attribute.Float;
+    longitude: Attribute.Float;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -12,26 +12,22 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
     "name": {
       "type": "string"
     },
     "description": {
       "type": "text"
-    },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "Cafe",
-        "Coworking Space",
-        "Library",
-        "Restaurant",
-        "Park",
-        "Hotel",
-        "Home",
-        "Community Space",
-        "Transport",
-        "Beach"
-      ]
     },
     "address": {
       "type": "string"
@@ -42,53 +38,23 @@
     "country": {
       "type": "string"
     },
-    "opening_hours": {
-      "type": "json"
-    },
-    "contact_phone": {
+    "type": {
       "type": "string"
     },
-    "rating": {
-      "type": "integer"
+    "openingHours": {
+      "type": "json"
     },
-    "cover_image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+    "facilities": {
+      "type": "json"
     },
-    "wifi": {
-      "type": "enumeration",
-      "enum": [
-        "very good",
-        "good",
-        "bad"
-      ],
-      "required": false,
-      "default": "good"
+    "mainFacilities": {
+      "type": "json"
     },
-    "price": {
-      "type": "enumeration",
-      "enum": [
-        "very cheap",
-        "cheap",
-        "expensive"
-      ],
-      "default": "cheap"
+    "latitude": {
+      "type": "float"
     },
-    "cleanliness": {
-      "type": "enumeration",
-      "enum": [
-        "very good",
-        "good",
-        "bad"
-      ],
-      "default": "good"
+    "longitude": {
+      "type": "float"
     }
   }
 }
