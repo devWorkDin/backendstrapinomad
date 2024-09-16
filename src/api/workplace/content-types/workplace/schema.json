@@ -12,17 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "image": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "name": {
       "type": "string"
     },
@@ -55,11 +44,9 @@
     },
     "longitude": {
       "type": "float"
-    }, "users": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "workplaces"
+    },
+    "image": {
+      "type": "text"
     }
   }
 }
