@@ -143,11 +143,11 @@
     },
     "friendsArray": {
       "type": "json"
-    },
-    "workplaces": {
+    }, "workplaces": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::workplace.workplace"
+      "relation": "manyToMany",
+      "target": "api::workplace.workplace",
+      "inversedBy": "users"
     }
   }
 }

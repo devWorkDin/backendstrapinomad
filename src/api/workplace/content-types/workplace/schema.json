@@ -55,6 +55,11 @@
     },
     "longitude": {
       "type": "float"
+    }, "users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "workplaces"
     }
   }
 }
