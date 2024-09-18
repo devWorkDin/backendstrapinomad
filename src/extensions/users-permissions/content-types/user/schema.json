@@ -143,6 +143,12 @@
     },
     "friendsArray": {
       "type": "json"
+    },
+    "workplaces": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::workplace.workplace",
+      "mappedBy": "user"
     }
   }
 }

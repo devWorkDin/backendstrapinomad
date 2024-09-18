@@ -809,6 +809,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::friend-request.friend-request'
     >;
     friendsArray: Attribute.JSON;
+    workplaces: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::workplace.workplace'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1062,6 +1067,11 @@ export interface ApiWorkplaceWorkplace extends Schema.CollectionType {
     latitude: Attribute.Float;
     longitude: Attribute.Float;
     image: Attribute.Text;
+    user: Attribute.Relation<
+      'api::workplace.workplace',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
