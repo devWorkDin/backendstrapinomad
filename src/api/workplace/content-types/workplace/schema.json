@@ -53,6 +53,18 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "workplaces"
+    },
+    "wifi": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    },
+    "cleanliness": {
+      "type": "string"
+    },
+    "plugs": {
+      "type": "string"
     }
   }
 }

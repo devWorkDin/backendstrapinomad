@@ -1072,6 +1072,10 @@ export interface ApiWorkplaceWorkplace extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
+    wifi: Attribute.String;
+    price: Attribute.String;
+    cleanliness: Attribute.String;
+    plugs: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
