@@ -24,17 +24,26 @@
     "location": {
       "type": "json"
     },
-    "organizer": {
-      "type": "json"
-    },
-    "attendees": {
-      "type": "json"
-    },
     "maxAttendees": {
       "type": "integer"
     },
+    "price": {
+      "type": "integer"
+    },
+    "participants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "events_participants"
+    },
+    "organizer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "events_organizer"
+    },
     "categories": {
-      "type": "blocks"
+      "type": "json"
     }
   }
 }

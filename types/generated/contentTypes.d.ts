@@ -790,8 +790,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'api::destination.destination'
     >;
     image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    latitude: Attribute.Text;
-    longitude: Attribute.Text;
     visible: Attribute.Boolean & Attribute.DefaultTo<false>;
     friends: Attribute.Relation<
       'plugin::users-permissions.user',
@@ -813,6 +811,16 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'oneToMany',
       'api::workplace.workplace'
+    >;
+    events_participants: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::event.event'
+    >;
+    events_organizer: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::event.event'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -882,10 +890,19 @@ export interface ApiEventEvent extends Schema.CollectionType {
     title: Attribute.Text;
     description: Attribute.Text;
     location: Attribute.JSON;
-    organizer: Attribute.JSON;
-    attendees: Attribute.JSON;
     maxAttendees: Attribute.Integer;
-    categories: Attribute.Blocks;
+    price: Attribute.Integer;
+    participants: Attribute.Relation<
+      'api::event.event',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    organizer: Attribute.Relation<
+      'api::event.event',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    categories: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

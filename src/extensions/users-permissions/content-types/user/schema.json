@@ -114,12 +114,6 @@
         "audios"
       ]
     },
-    "latitude": {
-      "type": "text"
-    },
-    "longitude": {
-      "type": "text"
-    },
     "visible": {
       "type": "boolean",
       "default": false
@@ -149,6 +143,18 @@
       "relation": "oneToMany",
       "target": "api::workplace.workplace",
       "mappedBy": "user"
+    },
+    "events_participants": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::event.event",
+      "mappedBy": "participants"
+    },
+    "events_organizer": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event",
+      "mappedBy": "organizer"
     }
   }
 }
