@@ -155,6 +155,12 @@
       "relation": "oneToMany",
       "target": "api::event.event",
       "mappedBy": "organizer"
+    },
+    "currentCity": {
+      "type": "string"
+    },
+    "currentCountry": {
+      "type": "string"
     }
   }
 }
