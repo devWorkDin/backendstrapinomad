@@ -903,6 +903,7 @@ export interface ApiEventEvent extends Schema.CollectionType {
       'plugin::users-permissions.user'
     >;
     categories: Attribute.JSON;
+    city: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

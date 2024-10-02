@@ -44,6 +44,9 @@
     },
     "categories": {
       "type": "json"
+    },
+    "city": {
+      "type": "string"
     }
   }
 }
