@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nomad_cities",
+  "info": {
+    "singularName": "nomad-city",
+    "pluralName": "nomad-cities",
+    "displayName": "NomadCity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "infos": {
+      "type": "json"
+    }
+  }
+}

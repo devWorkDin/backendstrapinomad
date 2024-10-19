@@ -968,6 +968,37 @@ export interface ApiFriendRequestFriendRequest extends Schema.CollectionType {
   };
 }
 
+export interface ApiNomadCityNomadCity extends Schema.CollectionType {
+  collectionName: 'nomad_cities';
+  info: {
+    singularName: 'nomad-city';
+    pluralName: 'nomad-cities';
+    displayName: 'NomadCity';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    infos: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::nomad-city.nomad-city',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::nomad-city.nomad-city',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProductProduct extends Schema.CollectionType {
   collectionName: 'products';
   info: {
@@ -1135,6 +1166,7 @@ declare module '@strapi/types' {
       'api::destination.destination': ApiDestinationDestination;
       'api::event.event': ApiEventEvent;
       'api::friend-request.friend-request': ApiFriendRequestFriendRequest;
+      'api::nomad-city.nomad-city': ApiNomadCityNomadCity;
       'api::product.product': ApiProductProduct;
       'api::rating-destination.rating-destination': ApiRatingDestinationRatingDestination;
       'api::recipe.recipe': ApiRecipeRecipe;
