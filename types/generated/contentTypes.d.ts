@@ -824,6 +824,26 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     currentCity: Attribute.String;
     currentCountry: Attribute.String;
+    posts: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::post.post'
+    >;
+    liked_posts: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::post.post'
+    >;
+    reposted_posts: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::post.post'
+    >;
+    comments: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::comment.comment'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -834,6 +854,57 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCommentComment extends Schema.CollectionType {
+  collectionName: 'comments';
+  info: {
+    singularName: 'comment';
+    pluralName: 'comments';
+    displayName: 'Comment';
+    description: 'Commentaires sur les posts';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.String & Attribute.Required;
+    author: Attribute.Relation<
+      'api::comment.comment',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    post: Attribute.Relation<
+      'api::comment.comment',
+      'manyToOne',
+      'api::post.post'
+    >;
+    parent_comment: Attribute.Relation<
+      'api::comment.comment',
+      'manyToOne',
+      'api::comment.comment'
+    >;
+    replies: Attribute.Relation<
+      'api::comment.comment',
+      'oneToMany',
+      'api::comment.comment'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::comment.comment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::comment.comment',
       'oneToOne',
       'admin::user'
     > &
@@ -995,6 +1066,104 @@ export interface ApiNomadCityNomadCity extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNomadPlaceNomadPlace extends Schema.CollectionType {
+  collectionName: 'nomad_places';
+  info: {
+    singularName: 'nomad-place';
+    pluralName: 'nomad-places';
+    displayName: 'NomadPlace';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    city: Attribute.String;
+    country: Attribute.String;
+    coordinates: Attribute.JSON;
+    slug: Attribute.UID<'api::nomad-place.nomad-place', 'city'>;
+    isActive: Attribute.Boolean & Attribute.DefaultTo<false>;
+    currency: Attribute.String;
+    timezone: Attribute.String;
+    posts: Attribute.Relation<
+      'api::nomad-place.nomad-place',
+      'oneToMany',
+      'api::post.post'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::nomad-place.nomad-place',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::nomad-place.nomad-place',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPostPost extends Schema.CollectionType {
+  collectionName: 'posts';
+  info: {
+    name: 'Post';
+    description: 'Posts du feed principal';
+    singularName: 'post';
+    pluralName: 'posts';
+    displayName: 'Post';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText & Attribute.Required;
+    media: Attribute.Media<'images' | 'videos', true>;
+    author: Attribute.Relation<
+      'api::post.post',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    likes: Attribute.Relation<
+      'api::post.post',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    reposts: Attribute.Relation<
+      'api::post.post',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
+    comments: Attribute.Relation<
+      'api::post.post',
+      'oneToMany',
+      'api::comment.comment'
+    >;
+    isRepost: Attribute.Boolean & Attribute.DefaultTo<false>;
+    originalPost: Attribute.Relation<
+      'api::post.post',
+      'manyToOne',
+      'api::post.post'
+    >;
+    nomadPlace: Attribute.Relation<
+      'api::post.post',
+      'manyToOne',
+      'api::nomad-place.nomad-place'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::post.post', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -1163,10 +1332,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::comment.comment': ApiCommentComment;
       'api::destination.destination': ApiDestinationDestination;
       'api::event.event': ApiEventEvent;
       'api::friend-request.friend-request': ApiFriendRequestFriendRequest;
       'api::nomad-city.nomad-city': ApiNomadCityNomadCity;
+      'api::nomad-place.nomad-place': ApiNomadPlaceNomadPlace;
+      'api::post.post': ApiPostPost;
       'api::product.product': ApiProductProduct;
       'api::rating-destination.rating-destination': ApiRatingDestinationRatingDestination;
       'api::recipe.recipe': ApiRecipeRecipe;

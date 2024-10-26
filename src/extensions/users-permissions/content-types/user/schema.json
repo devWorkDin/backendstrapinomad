@@ -161,6 +161,30 @@
     },
     "currentCountry": {
       "type": "string"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "author"
+    },
+    "liked_posts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post",
+      "mappedBy": "likes"
+    },
+    "reposted_posts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::post.post",
+      "mappedBy": "reposts"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "author"
     }
   }
 }

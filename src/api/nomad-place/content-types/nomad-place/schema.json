@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "nomad_places",
+  "info": {
+    "singularName": "nomad-place",
+    "pluralName": "nomad-places",
+    "displayName": "NomadPlace",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "coordinates": {
+      "type": "json"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "city"
+    },
+    "isActive": {
+      "type": "boolean",
+      "default": false
+    },
+    "currency": {
+      "type": "string"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post"
+    }
+  }
+}

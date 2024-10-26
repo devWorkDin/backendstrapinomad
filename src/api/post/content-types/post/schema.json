@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "name": "Post",
+    "description": "Posts du feed principal",
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "videos"]
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "posts"
+    },
+    "likes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "liked_posts"
+    },
+    "reposts": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "reposted_posts"
+    },
+    "comments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::comment.comment",
+      "mappedBy": "post"
+    },
+    "isRepost": {
+      "type": "boolean",
+      "default": false
+    },
+    "originalPost": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::post.post"
+    },"nomadPlace": { 
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::nomad-place.nomad-place",
+      "inversedBy": "posts"
+    }
+  }
+}
