@@ -1,0 +1,12 @@
+# Node.js
+node_modules/
+.cache/
+build/
+
+# Strapi-specific
+.tmp/
+.db/
+public/uploads/
+
+# Logs
+*.log

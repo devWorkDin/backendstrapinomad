@@ -844,6 +844,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::comment.comment'
     >;
+    liked_comments: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::comment.comment'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -893,6 +898,11 @@ export interface ApiCommentComment extends Schema.CollectionType {
       'api::comment.comment',
       'oneToMany',
       'api::comment.comment'
+    >;
+    likes: Attribute.Relation<
+      'api::comment.comment',
+      'manyToMany',
+      'plugin::users-permissions.user'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

@@ -19,7 +19,10 @@
     "media": {
       "type": "media",
       "multiple": true,
-      "allowedTypes": ["images", "videos"]
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
     },
     "author": {
       "type": "relation",
@@ -53,7 +56,8 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::post.post"
-    },"nomadPlace": { 
+    },
+    "nomadPlace": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::nomad-place.nomad-place",

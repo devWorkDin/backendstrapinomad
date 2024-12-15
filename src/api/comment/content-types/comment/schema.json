@@ -1,4 +1,3 @@
-
 {
   "kind": "collectionType",
   "collectionName": "comments",
@@ -39,6 +38,12 @@
       "relation": "oneToMany",
       "target": "api::comment.comment",
       "mappedBy": "parent_comment"
+    },
+    "likes": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "liked_comments"
     }
   }
 }
